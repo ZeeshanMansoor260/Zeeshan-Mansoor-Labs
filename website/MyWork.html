@@ -1,0 +1,221 @@
+    <!DOCTYPE html>
+    
+    <!-- Specify a default language -->
+     
+    <html lang="en">
+     
+        <head>
+    <!-- Define the character set  -->
+     
+            <meta charset="utf-8">
+ 
+    <!-- Load the stylesheets  -->
+
+            <link rel="stylesheet" href="style\">
+            <link rel="icon" href="image\">
+     
+    <!-- Set the title of your application -->
+     
+            <title>Portfolio</title>
+     
+            <!-- 
+                As you may or may not have already
+                realized, HTML5 isn't supported in
+                older versions of internet explorer.
+     
+                To compensate for this, you should
+                use html5shiv to add support to
+                HTML5.
+     
+                The code used to do this, will only
+                work inside the HEAD, however.
+     
+                And for performance sake, this should
+                go after the CSS.
+            -->
+     
+            <!--[if lt IE 9]>
+                <script src="dist/html5shiv.js"></script>
+            <![endif]-->
+     		<style>
+#div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+ul#menu li {
+    display:inline;
+    
+}
+ul#menu {
+	text-align: center;	
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+div.relative{
+	position: relative;
+    left: 590px;
+}
+
+
+</style>
+        </head>
+     
+    <body>
+    
+    <div class="container">
+     
+   
+     
+    <header>
+	<div class="relative">
+	<img src="321.jpg"  style="width:304px;height:228px;">
+        </div>
+        <ul id="menu" >
+        <li><a href="SampleHTML5.html">Home</a></li>
+        <li><a href="MyWork.html">MyWork</a></li>
+        <li><a href="ContactMe.html">Contact</a></li>
+     
+    </ul>
+     
+    </header>
+     
+     
+    <nav>
+ 
+
+     	
+	<hgroup>
+            <h1><font color="#FF00FF">Zeeshan Mansoor</font></h1>
+            <h2><font color="#5D5D79">Web Developer</font></h2>
+        </hgroup>
+
+</nav>
+     
+    <div class="main">
+    
+	   
+     
+            <hgroup>
+                <h3><font color="brown">Expertise</font></h3>
+            </hgroup>
+  	<table>
+	<tr>
+	<td>	
+	<h3><font color="#669999">Professional capabilities</font></h3>
+		<ul style="list-style-type:square">
+  			<li>High-quality front and back-end development for web sites</li>
+  			<li>Modular, scalable, robust, and reusable code.</li>
+  			<li>Performance optimisation, usability, and accessibility.</li>
+		</ul>   
+     	</td>
+	<td>
+		<h3><font color="#669999">Technical skills</font></h3>
+		<ul style="list-style-type:square">
+  			<li>PHP, Codeigniter</li>
+  			<li>Ruby on Rail</li>
+  			<li>Javascript, jQuery, CoffeeScript</li>
+		</ul>  
+	</td>
+	</tr>
+	
+		
+	</table>
+		
+	<hgroup>
+                <h3><font color="brown">Experience</font></h3>
+        </hgroup>
+        
+	<table>
+	<tr>
+	<td>	
+	<h3><font color="#669999">Lead Developer, Designer @InvestorWatchdog</font></h3>
+		<p>Responsible for Product Design, Development and Linux Cloud Server Setup. Ruby on Rails, jQuery, CoffeeScript, Compass CSS, Server Administration.</p> 
+     	</td>
+	<td>
+		<h3><font color="#669999">Lead Developer, Designer @ReadPrint</font></h3>
+		<p>Responsible for Product Design, Development and Linux Cloud Server Setup. Codeigniter PHP, jQuery, Server Administration.</p>
+	</td>
+	</tr>
+	
+		
+	</table>
+
+
+     
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+     <script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.strokeText("Hello World",10,50);
+</script>
+<script>
+function success(position) {
+  var s = document.querySelector('#status');
+  
+  if (s.className == 'success') {
+    // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
+    return;
+  }
+  
+  s.innerHTML = "found you!";
+  s.className = 'success';
+  
+  var mapcanvas = document.createElement('div');
+  mapcanvas.id = 'mapcanvas';
+  mapcanvas.style.height = '400px';
+  mapcanvas.style.width = '560px';
+    
+  document.querySelector('article').appendChild(mapcanvas);
+  
+  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  var myOptions = {
+    zoom: 15,
+    center: latlng,
+    mapTypeControl: false,
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+  
+  var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map, 
+      title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+  });
+}
+
+function error(msg) {
+  var s = document.querySelector('#status');
+  s.innerHTML = typeof msg == 'string' ? msg : "failed";
+  s.className = 'fail';
+  
+  // console.log(arguments);
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+} else {
+  error('not supported');
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+    </div>
+</body>
+</html>
